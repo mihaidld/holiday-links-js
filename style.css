@@ -1,0 +1,9 @@
+body {
+  font-family: Atma, sans-serif;
+}
+
+.page-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(images/holidays.jpg);
+  background-size: cover;
+}

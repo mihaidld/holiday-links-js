@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alyra Holidays - Liens utiles</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Atma:400,300,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="p-5 bg-warning mb-4 text-center text-white page-header">
+      <div class="container">
+        <h1 class="display-1">Ma top liste des ressources</h1>
+        <p class="lead">Édition vacances 2020</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <h2 class="mb-3">Liste des liens 🏖 :</h2>
+        <div id="filter-sort" class="row row-cols-1 row-cols-md-2 mb-3">
+          <div id="filter" class="col mb-3">
+            <div class="input-group">
+              <label for="selectCategory" class="input-group-text text-dark"
+                >Catégories</label
+              >
+              <select id="selectCategory" name="selectCategory" class="form-select text-dark">
+                <option value="toutes" class="bg-secondary text-white" selected>
+                  toutes
+                </option>
+              </select>
+            </div>
+          </div>
+          <div id="sort" class="col mb-3">
+            <div class="input-group">
+              <label for="selectSort" class="input-group-text text-dark"
+                >Trier</label
+              >
+              <select
+                id="selectSort"
+                name="selectSort"
+                class="form-select text-dark"
+              >
+                <option value="AZ" class="bg-secondary text-white" selected
+                  >de A à Z</option
+                >
+                <option value="ZA" class="bg-secondary text-white"
+                  >de Z à A</option
+                >
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="container" class="mb-3"></div>
+      </div>
+    </section>
+    <section class="bg-dark text-white py-5">
+      <div class="container">
+        <h2>Ajouter un lien</h2>
+        <form id="form">
+          <div class="input-group mb-3">
+            <label for="title" class="input-group-text">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="input-group mb-3">
+            <label for="url" class="input-group-text">Url</label>
+            <input
+              type="url"
+              id="url"
+              name="url"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="input-group mb-3">
+            <label for="description" class="input-group-text"
+              >Description</label
+            >
+            <input
+              type="text"
+              id="description"
+              name="description"
+              class="form-control"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <label for="category" class="input-group-text">Catégorie</label>
+            <select name="category" id="category" class="form-control">
+              <option value="js" selected>JavaScript</option>
+              <option value="portfolio">Portfolio</option>
+              <option value="inspiration">Inspiration</option>
+              <option value="misc">Misc</option>
+            </select>
+          </div>
+          <button class="btn btn-warning" type="submit">Ajouter</button>
+        </form>
+      </div>
+    </section>
+    <script src="js/default-list.js"></script>
+    <script src="js/list-links.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
