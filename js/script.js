@@ -1,7 +1,7 @@
 "use strict";
 const container = document.getElementById("container");
 const form = document.getElementById("form");
-//listLinks instance de liste filtree et triee
+//listLinks instance de liste filtrée et triée
 const listLinks = new FilteredSortedLinks(
   container,
   defaultList,
@@ -9,20 +9,21 @@ const listLinks = new FilteredSortedLinks(
   selectSort.value
 );
 listLinks.init();
-
-console.log(listLinks);
+console.dir(ListLinks);
+console.dir(FilteredSortedLinks);
+console.log("instance classe enfant :", listLinks);
 
 // quand l'événement "submit" pour le formulaire est déclanché
 form.addEventListener("submit", (event) => {
-  /* le code dans la linge ci-dessous previent le formulaire d'envoyer des données, 
-  on remplace le comportement par détaut par notre js */
+  /* le code dans la ligne ci-dessous prévient le formulaire d'envoyer des
+  données, on remplace le comportement par défaut par notre js */
   event.preventDefault();
-  // méthode pushEl
+  // méthode pushEl en récupérant les valeurs des input depuis le formulaire
   listLinks.pushEl({
     title: form.elements.title.value.trim(),
-    url: form.elements.url.value.trim(), // @todo : de la même façon on peut récupérer la valeur d'url depuis le formulaire
-    description: form.elements.description.value.trim(), // @todo : et la valeur de description depuis le formulaire,
-    category: form.elements.category.value, // @todo : et la valeur de category depuis le formulaire,
+    url: form.elements.url.value.trim(),
+    description: form.elements.description.value.trim(),
+    category: form.elements.category.value,
   });
   // la ligne ci-dessous fait un reset du formulaire (les champs redeviennent vides)
   form.reset();
@@ -34,7 +35,9 @@ selectSort.addEventListener("change", () => {
   listLinks.refresh();
 });
 
-//function pour remplir les options categories a filtrer et eventListener
+/*fonction pour remplir les options catégories à filtrer, récupérées
+dynamiquement à partir des options du select catégorie dans formulaire Ajouter
+un lien et eventListener dessus*/
 function activateFilterCategory() {
   const optionsCategory = document.querySelectorAll("#category option");
   const categories = [];
@@ -42,7 +45,7 @@ function activateFilterCategory() {
     categories.push(option.value);
   }
   //categories.sort();
-  console.log(categories);
+  console.log("liste catégories dans le filtre :", categories);
   for (let category of categories) {
     const option = document.createElement("option");
     option.value = category;
@@ -51,7 +54,6 @@ function activateFilterCategory() {
     selectCategory.append(option);
   }
   selectCategory.addEventListener("change", () => {
-    //filterCategory = selectCategory.value;
     listLinks.categoryOption = selectCategory.value;
     listLinks.refresh();
   });

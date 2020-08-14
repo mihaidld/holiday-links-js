@@ -10,9 +10,9 @@ class ListLinks {
 
   pushEl(el) {
     /*on cree un array qui contient tous les urls trouvés dans this.list */
-    console.log(this.list);
+    console.log("liste avant le push :", this.list);
     const urls = this.list.map((el) => el.url);
-    console.log(urls);
+    console.log("liste urls avant push :", urls);
     if (!urls.includes(el.url)) {
       // si el.url n'est pas dans la liste des urls
       // je l'ajoute
@@ -20,14 +20,15 @@ class ListLinks {
       // et j'appelle la méthode refresh
       this.refresh();
     } else {
-      alert("Ce lien est déjà inclu");
+      alert("Ce lien est déjà inclus");
     }
+    console.log("liste apres le push :", this.list);
   }
   remove(el) {
     const i = this.list.findIndex((item) => item === el);
     // <- ce code trouve index de l'élément récherché
     this.list.splice(i, 1); // <- ce code enleve l'élément avec index i de this.list
-    console.log(this.list);
+    console.log("liste apres suppression :", this.list);
     this.refresh();
   }
   refresh() {
@@ -132,10 +133,13 @@ class ListLinks {
     return buttonEl;
   }
 }
+
 //elements HTML recupérés pour faire le tri et filtre
 const selectSort = document.getElementById("selectSort");
 const selectCategory = document.getElementById("selectCategory");
 
+/*déclaration child class avec nouvelles clés filtre et tri choisis et méthodes
+filter et sort*/
 class FilteredSortedLinks extends ListLinks {
   //modification constructor parent
   constructor(container, defaultList, categoryOption, sortOption) {
@@ -152,6 +156,7 @@ class FilteredSortedLinks extends ListLinks {
         return element.category === this.categoryOption;
       }
     });
+    console.log("catégorie choisie :", this.categoryOption);
     return filteredList;
   }
 
@@ -165,25 +170,23 @@ class FilteredSortedLinks extends ListLinks {
     return list.sort((right, left) => (right.title < left.title ? 1 : -1));
   }
 
-  //tri liste filtree
+  //tri liste filtrée en appelant méthodes de tri
   sort() {
-    //tri en appelant fonctions de tri
     const filteredList = this.filter();
-    console.log(filteredList);
     if (this.sortOption === "AZ") {
       this.sortByTitle(filteredList);
     } else {
       this.sortByTitleReverse(filteredList);
     }
-    console.log(filteredList);
+    console.log("tri choisi :", this.sortOption);
+    console.log("liste filtrée et triée", filteredList);
     return filteredList;
   }
 
-  /*mise a jour methode addUl du parent pour creer liEl selon liste filtree et
-  triee*/
+  /*mise à jour methode addUl du parent pour créer liEl selon liste filtrée et
+  triée*/
   addUl() {
     const sortedList = this.sort();
-    console.log(sortedList);
     const ulEl = this.createUlElement();
     for (let el of sortedList) {
       const li = this.addLi(el);
