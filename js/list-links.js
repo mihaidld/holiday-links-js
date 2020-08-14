@@ -162,12 +162,16 @@ class FilteredSortedLinks extends ListLinks {
 
   // tri AZ par title
   sortByTitle(list) {
-    return list.sort((right, left) => (right.title > left.title ? 1 : -1));
+    return list.sort((right, left) =>
+      right.title.toLowerCase() > left.title.toLowerCase() ? 1 : -1
+    );
   }
 
   // tri ZA par title
   sortByTitleReverse(list) {
-    return list.sort((right, left) => (right.title < left.title ? 1 : -1));
+    return list.sort((right, left) =>
+      right.title.toLowerCase() < left.title.toLowerCase() ? 1 : -1
+    );
   }
 
   //tri liste filtrée en appelant méthodes de tri
