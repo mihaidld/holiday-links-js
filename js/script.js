@@ -9,9 +9,9 @@ const listLinks = new FilteredSortedLinks(
   selectSort.value
 );
 listLinks.init();
-console.dir(ListLinks);
-console.dir(FilteredSortedLinks);
-console.log("instance classe enfant :", listLinks);
+//console.dir(ListLinks);
+//console.dir(FilteredSortedLinks);
+//console.log("instance classe enfant :", listLinks);
 
 // quand l'événement "submit" pour le formulaire est déclanché
 form.addEventListener("submit", (event) => {
@@ -19,6 +19,7 @@ form.addEventListener("submit", (event) => {
   données, on remplace le comportement par défaut par notre js */
   event.preventDefault();
   // méthode pushEl en récupérant les valeurs des input depuis le formulaire
+  //console.log(form.elements);
   listLinks.pushEl({
     title: form.elements.title.value.trim(),
     url: form.elements.url.value.trim(),
@@ -45,7 +46,7 @@ function activateFilterCategory() {
     categories.push(option.value);
   }
   //categories.sort();
-  console.log("liste catégories dans le filtre :", categories);
+  //console.log("liste catégories dans le filtre :", categories);
   for (let category of categories) {
     const option = document.createElement("option");
     option.value = category;

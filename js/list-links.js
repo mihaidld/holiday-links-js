@@ -10,9 +10,9 @@ class ListLinks {
 
   pushEl(el) {
     /*on cree un array qui contient tous les urls trouvés dans this.list */
-    console.log("liste avant le push :", this.list);
+    //console.log("liste avant le push :", this.list);
     const urls = this.list.map((el) => el.url);
-    console.log("liste urls avant push :", urls);
+    //console.log("liste urls avant push :", urls);
     if (!urls.includes(el.url)) {
       // si el.url n'est pas dans la liste des urls
       // je l'ajoute
@@ -22,13 +22,13 @@ class ListLinks {
     } else {
       alert("Ce lien est déjà inclus");
     }
-    console.log("liste apres le push :", this.list);
+    //console.log("liste apres le push :", this.list);
   }
   remove(el) {
     const i = this.list.findIndex((item) => item === el);
     // <- ce code trouve index de l'élément récherché
     this.list.splice(i, 1); // <- ce code enleve l'élément avec index i de this.list
-    console.log("liste apres suppression :", this.list);
+    //console.log("liste apres suppression :", this.list);
     this.refresh();
   }
   refresh() {
@@ -45,13 +45,14 @@ class ListLinks {
   }
   render() {
     const ulEl = this.addUl();
+    //on vide le container avant de chaque rajout de l'ulEl avec les cartes
     this.container.innerHTML = "";
     this.container.append(ulEl);
   }
 
   addUl() {
     const ulEl = this.createUlElement();
-    console.log(this.list);
+    //console.log(this.list);
     for (let el of this.list) {
       const li = this.addLi(el);
       ulEl.append(li);
@@ -156,7 +157,7 @@ class FilteredSortedLinks extends ListLinks {
         return element.category === this.categoryOption;
       }
     });
-    console.log("catégorie choisie :", this.categoryOption);
+    //console.log("catégorie choisie :", this.categoryOption);
     return filteredList;
   }
 
@@ -182,8 +183,8 @@ class FilteredSortedLinks extends ListLinks {
     } else {
       this.sortByTitleReverse(filteredList);
     }
-    console.log("tri choisi :", this.sortOption);
-    console.log("liste filtrée et triée", filteredList);
+    //console.log("tri choisi :", this.sortOption);
+    //console.log("liste filtrée et triée", filteredList);
     return filteredList;
   }
 
